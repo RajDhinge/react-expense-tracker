@@ -8,7 +8,7 @@ const ExpenseItem = (props) => {
 
 	const titleHandler = () => {
 		setTitle("Updating title");
-	}
+	};
 
 	return (
 		<Card className='expense-item'>

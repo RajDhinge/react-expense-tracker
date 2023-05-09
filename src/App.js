@@ -25,9 +25,18 @@ const App = () => {
 			date: new Date(2021, 5, 12),
 		},
 	];
+
+	const saveNewExpenseItemData = (enteredExpenseData) => {
+		const expenseData = {
+			...enteredExpenseData,
+			id: Math.random().toString()
+		};
+		console.log(expenseData);
+	};
+
 	return (
 		<div>
-			<NewExpense />
+			<NewExpense onExpenseIntemSave={saveNewExpenseItemData} />
 			<Card className='expenses'>
 				<Expenses expenses={expenses} />
 			</Card>
