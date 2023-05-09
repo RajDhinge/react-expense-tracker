@@ -1,7 +1,9 @@
-import ExpenseItem from './components/ExpenseItem';
+import Expenses from './components/Expenses/Expenses';
+import Card from './components/UI/Card'
+import './components/Expenses/Expenses.css'
+import NewExpense from './components/NewExpense/NewExpense';
 
-
-function App() {
+const App = () => {
 	const expenses = [
 		{
 			id: 'e1',
@@ -25,29 +27,10 @@ function App() {
 	];
 	return (
 		<div>
-			<h2>Let's get started!</h2>
-			<div>
-				<ExpenseItem
-					title={expenses[0].title}
-					date={expenses[0].date}
-					price={expenses[0].amount}
-					description={expenses[0].description} />
-				<ExpenseItem
-					title={expenses[1].title}
-					date={expenses[1].date}
-					price={expenses[1].amount}
-					description={expenses[1].description} />
-				<ExpenseItem
-					title={expenses[2].title}
-					date={expenses[2].date}
-					price={expenses[2].amount}
-					description={expenses[2].description} />
-				<ExpenseItem
-					title={expenses[3].title}
-					date={expenses[3].date}
-					price={expenses[3].amount}
-					description={expenses[3].description} />
-			</div>
+			<NewExpense />
+			<Card className='expenses'>
+				<Expenses expenses={expenses} />
+			</Card>
 		</div>
 	);
 }
