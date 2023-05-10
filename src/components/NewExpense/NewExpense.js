@@ -12,6 +12,7 @@ const NewExpense = (props) => {
 			id: Math.random().toString()
 		};
 		props.onExpenseIntemSave(expenseData);
+		setShowForm(0);
 	}
 	const showExpenseForm = () => {
 		setShowForm(1);
