@@ -1,4 +1,4 @@
-import react from "react"
+import React from "react"
 import ExpenseItem from "./ExpenseItem";
 import './ExpensesList.css';
 
@@ -8,17 +8,20 @@ const ExpensesList = (props) => {
 		return <h2 className="expenses-list__fallback">No content found.</h2>;
 	}
 
-	return props.expenses.map((expense) => {
-		return (
-			<ul className="expenses-list">
+	console.log(props.expenses);
+
+	return (
+		<ul className="expenses-list">
+			{props.expenses.map((expense) => (
 				<ExpenseItem
 					key={expense.id}
 					title={expense.title}
 					price={expense.amount}
-					date={expense.date} />
-			</ul>
-		)
-	});
+					date={expense.date}
+				/>
+			))}
+		</ul>
+	);
 
 }
 

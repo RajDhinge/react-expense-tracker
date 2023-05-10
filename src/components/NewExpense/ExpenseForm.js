@@ -5,6 +5,7 @@ const ExpenseForm = (props) => {
 	const [enteredTitle, setEnteredTitle] = useState('');
 	const [enteredAmount, setEnteredAmount] = useState('');
 	const [enteredDate, setEnteredDate] = useState('');
+	const [showForm, setShowForm] = useState(0);
 
 	const titleChangeHandler = (event) => {
 		setEnteredTitle(event.target.value);
@@ -26,12 +27,27 @@ const ExpenseForm = (props) => {
 			date: new Date(enteredDate)
 		};
 
-		console.log(expenseData);
 		props.onExpenseSave(expenseData);
 		setEnteredAmount('');
 		setEnteredDate('');
 		setEnteredTitle('');
 	}
+
+	const showExpenseForm = () => {
+		setShowForm(1);
+	}
+	const hideExpenseForm = () => {
+		setShowForm(0);
+	}
+
+	if (showForm === 0) {
+		return (
+			<div>
+				<button onClick={showExpenseForm}>Add New Exense</button>
+			</div>
+		);
+	}
+
 	return (
 		<form onSubmit={submitHandler}>
 			<div className='new-expense__controls'>
@@ -58,6 +74,9 @@ const ExpenseForm = (props) => {
 						max="2022-12-31"
 						value={enteredDate}
 						onChange={dateChangeHandler} />
+				</div>
+				<div className='new-expense__actions'>
+					<button onClick={hideExpenseForm}>Cancel</button>
 				</div>
 				<div className='new-expense__actions'>
 					<button type='submit'>Add Exense</button>
