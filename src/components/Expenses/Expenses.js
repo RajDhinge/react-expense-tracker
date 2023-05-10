@@ -8,12 +8,16 @@ const Expenses = (props) => {
 
 	const setFilterExpensesYear = (setYearvalue) => {
 		setFilterYearValue(setYearvalue);
-		console.log(setYearvalue);
 	}
+
+	const filteredExpensesByYear = props.expenses.filter((expense) =>
+		expense.date.getFullYear() === parseInt(filterYearValue)
+	);
+
 	return (
 		<Card>
 			<ExpensesFilter selected={filterYearValue} onFilterSet={setFilterExpensesYear} />
-			{props.expenses.map((expense) => {
+			{filteredExpensesByYear.map((expense) => {
 				return (
 					<ExpenseItem
 						key={expense.id}
